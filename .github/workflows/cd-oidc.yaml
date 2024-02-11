@@ -24,9 +24,8 @@ env:
 jobs:
   AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
-    
     steps:
-    #github is cloning the repository and has access to the files
+    # github is cloning the repository and has access to the files
       - name: Git checkout repo
         uses: actions/checkout@v3
 
@@ -38,6 +37,6 @@ jobs:
           role-session-name: GitHub-OIDC-TERRAFORM
 
       # Hello from AWS: WhoAmI
-      -name: Sts GetCallerIdentity
-       run: |
+      - name: Sts GetCallerIdentity
+        run: |
         aws sts get-caller-identity
