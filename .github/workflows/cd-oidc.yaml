@@ -24,15 +24,19 @@ env:
 jobs:
   AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Git clone the repository
+    #github is cloning the repository and has access to the files
+      - name: Git checkout repo
         uses: actions/checkout@v3
-      - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v1.7.0
+
+      - name: Configure AWS credentials from AWS account
+        uses: aws-actions/configure-aws-credentials@v1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE }}
           aws-region: ${{ secrets.AWS_REGION }}
           role-session-name: GitHub-OIDC-TERRAFORM
+
       # Hello from AWS: WhoAmI
       -name: Sts GetCallerIdentity
        run: |
