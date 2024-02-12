@@ -14,13 +14,14 @@ permissions:
   contents: read
 
 jobs:
-   AssumeRoleAndCallIdentity:
+  AssumeRoleAndCallIdentity:
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash
         working-directory: .
     steps:
+
       - name: Git clone the repository
         uses: actions/checkout@v3
 
