@@ -14,8 +14,8 @@ permissions:
   id-token: write
   contents: read
 
-jobs:
-  deploy:
+jobs: 
+  deploy: 
     name: OIDC logging and TF validation & build
     runs-on: ubuntu-latest
     steps:
