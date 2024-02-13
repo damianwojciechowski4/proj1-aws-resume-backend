@@ -21,7 +21,7 @@ jobs:
       run:
         shell: bash
         working-directory: .
-    steps:
+  steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
 
