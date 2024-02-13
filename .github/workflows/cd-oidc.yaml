@@ -17,10 +17,8 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
       steps:
+   
       - name: Git clone the repository
         uses: actions/checkout@v3
 
