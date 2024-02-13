@@ -3,11 +3,12 @@ name: "Connect to an AWS role from a GitHub  repository"
 
 on:
   push:
-    branches: [main]
-  # merge changes from one branch into another
+    branches: 
+      - main
+  # merge changes from one branch into main
   pull_request:
-    branches: [main]
-
+    branches: 
+      - main
 # Permission can be added at job level or workflow level   
 permissions: 
   id-token: write
