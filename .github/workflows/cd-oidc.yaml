@@ -36,6 +36,7 @@ jobs:
       uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: 1.2.5
+        
     - name: Terraform fmt
       id: fmt
       run: terraform fmt -check
@@ -57,7 +58,7 @@ jobs:
       run: terraform plan -no-color
       if: github.event_name == 'pull_request'
       continue-on-error: true
-      
+
     - uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
       env:
