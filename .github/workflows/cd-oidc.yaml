@@ -18,7 +18,6 @@ jobs:
   deploy:
     name: OIDC logging and TF validation & build
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
       name: Git clone the repository
