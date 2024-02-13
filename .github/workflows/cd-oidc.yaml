@@ -14,7 +14,7 @@ permissions:
   contents: read    # This is required for actions/checkout
 
 jobs:
-  test:
+  OIDC and TF validation:
     runs-on: ubuntu-latest
     steps:
     - name: Git clone the repository
@@ -50,7 +50,7 @@ jobs:
       id: plan
       run: terraform plan -no-color
       if: github.event_name == 'pull_request'
-      continue-on-error: tr    
+      continue-on-error: true   
     - uses: actions/github-script@v6
       if: github.event_name == 'pull_request'
       env:
