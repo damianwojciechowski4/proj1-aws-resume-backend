@@ -44,6 +44,7 @@ jobs:
 
     - name: Terraform Init
       id: init
+      working-directory: infra
       env:
         AWS_BUCKET_NAME: ${{ secrets.AWS_BUCKET_NAME }}
         AWS_BUCKET_KEY_NAME: ${{ secrets.AWS_BUCKET_KEY_NAME }}
@@ -51,10 +52,12 @@ jobs:
 
     - name: Terraform Validate
       id: validate
+      working-directory: infra
       run: terraform validate -no-color
 
     - name: Terraform Plan
       id: plan
+      working-directory: infra
       run: terraform plan -no-color
       
     - uses: actions/github-script@v6
@@ -91,4 +94,5 @@ jobs:
 
     - name: Terraform Apply
       id: apply
+      working-directory: infra
       run: terraform apply -auto-approve -input=false
