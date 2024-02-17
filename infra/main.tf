@@ -124,8 +124,8 @@ resource "aws_lambda_function" "lambda_function" {
   }
 }
 
-resource "aws_apigatewayv2_api" "exampleAPI" {
-    name = "exampleAPI_lambda"
+resource "aws_apigatewayv2_api" "resumeAPI" {
+    name = "CloudResume_APIgateway"
     protocol_type = "HTTP"
     cors_configuration {
       allow_headers     = ["Content-Type"]
@@ -137,14 +137,14 @@ resource "aws_apigatewayv2_api" "exampleAPI" {
 
 }
 
-resource "aws_apigatewayv2_stage" "exampleStage" {
-    api_id = aws_apigatewayv2_api.exampleAPI.id
-    name = "exampleStage"
+resource "aws_apigatewayv2_stage" "cloudResumeStage" {
+    api_id = aws_apigatewayv2_api.resumeAPI.id
+    name = "devStage_cloudResume"
     auto_deploy = true
 }
 
-resource "aws_apigatewayv2_integration" "exampleIntergration" {
-    api_id = aws_apigatewayv2_api.exampleAPI.id
+resource "aws_apigatewayv2_integration" "cloudResumeIntergration" {
+    api_id = aws_apigatewayv2_api.resumeAPI.id
 
     integration_uri = aws_lambda_function.lambda_function.invoke_arn
     integration_type = "AWS_PROXY"
@@ -153,9 +153,9 @@ resource "aws_apigatewayv2_integration" "exampleIntergration" {
 
 
 resource "aws_apigatewayv2_route" "exampleRoute" {
-    api_id = aws_apigatewayv2_api.exampleAPI.id
+    api_id = aws_apigatewayv2_api.resumeAPI.id
     route_key = "GET /VistorsCounter"
-    target = "integrations/${aws_apigatewayv2_integration.exampleIntergration.id}"
+    target = "integrations/${aws_apigatewayv2_integration.cloudResumeIntergration.id}"
 }
 
 
@@ -165,11 +165,11 @@ resource "aws_lambda_permission" "examplePermission" {
     function_name = aws_lambda_function.lambda_function.function_name
     principal = "apigateway.amazonaws.com"
 
-    source_arn = "${aws_apigatewayv2_api.exampleAPI.execution_arn}/*/*"
+    source_arn = "${aws_apigatewayv2_api.resumeAPI.execution_arn}/*/*"
     
   
 }
 
 output "base_url" {
-    value = "${aws_apigatewayv2_stage.exampleStage.invoke_url}/VistorsCounter"
+    value = "${aws_apigatewayv2_stage.cloudResumeStage.invoke_url}/VistorsCounter"
 }
