@@ -110,7 +110,7 @@ resource "aws_lambda_function" "lambda_function" {
 
   # Insert python code to Lambda
   filename      = "${path.module}/python/getCounter.zip"   # The filename of the deployment package (ZIP archive) for the Lambda function.
-  function_name = "DynamoDB_LambdaFunction"         # The name of the Lambda function.
+  function_name = "CloudResume_LambdaFunction"         # The name of the Lambda function.
   role          = aws_iam_role.lambda_assume_role.arn # The Amazon Resource Name (ARN) of the IAM role that the Lambda function will assume.
   handler       = "getCounter.lambda_handler"                    # The name of the function (within your code) that Lambda calls to start execution.
   runtime       = "python3.10"

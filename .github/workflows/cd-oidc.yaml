@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: "Connect to an AWS role from a GitHub  repository and test TF code"
+name: "Deploy Cloud Resume Infra"
 on:
   push:
     branches: 
