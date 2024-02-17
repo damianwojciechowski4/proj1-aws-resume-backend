@@ -154,7 +154,7 @@ resource "aws_apigatewayv2_integration" "cloudResumeIntergration" {
 
 resource "aws_apigatewayv2_route" "exampleRoute" {
     api_id = aws_apigatewayv2_api.resumeAPI.id
-    route_key = "GET /VistorsCounter"
+    route_key = "GET /VisitorsCounter"
     target = "integrations/${aws_apigatewayv2_integration.cloudResumeIntergration.id}"
 }
 
@@ -171,5 +171,5 @@ resource "aws_lambda_permission" "examplePermission" {
 }
 
 output "base_url" {
-    value = "${aws_apigatewayv2_stage.cloudResumeStage.invoke_url}/VistorsCounter"
+    value = "${aws_apigatewayv2_stage.cloudResumeStage.invoke_url}/VisitorsCounter"
 }
