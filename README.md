@@ -1,1 +1,2 @@
-# proj1-aws-resume-backend
+# AWS Resume backend repository
+![Alt Text](CloudResume.gif)
